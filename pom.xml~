@@ -3,7 +3,7 @@
       <modelVersion>4.0.0</modelVersion>
      
   <groupId>ua.com.univerpulse</groupId>
-  <artifactId>SlowNews</artifactId>
+  <artifactId>SlowNewsMaven</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
 
@@ -77,7 +77,7 @@
 	<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 	<id>openshift</id>
 	<build>
-		<finalName>SlowNews</finalName>
+		<finalName>SlowNewsMaven</finalName>
 		<plugins>
 		  <plugin>
 		    <artifactId>maven-war-plugin</artifactId>
