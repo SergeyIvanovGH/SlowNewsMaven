@@ -4,13 +4,8 @@
      
   <groupId>ua.com.univerpulse</groupId>
   <artifactId>slow-news</artifactId>
-<<<<<<< HEAD
   <version>1.0</version>
   <packaging>war </packaging>
-=======
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 
   <build>
     <plugins>
@@ -27,10 +22,7 @@
             <configuration>
                 <source>1.7</source>
                 <target>1.7</target>
-<<<<<<< HEAD
                 <encoding>UTF-8</encoding>
-=======
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
             </configuration>
         </plugin>
     </plugins>
@@ -53,12 +45,7 @@
       <dependency>
           <groupId>org.apache.tomcat</groupId>
           <artifactId>tomcat-servlet-api</artifactId>
-<<<<<<< HEAD
-          <version>7.0.68</version>
-          <!--<version>9.0.0.M4</version>-->
-=======
           <version>9.0.0.M4</version>
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
       </dependency>
       <dependency>
           <groupId>javax.ws.rs</groupId>

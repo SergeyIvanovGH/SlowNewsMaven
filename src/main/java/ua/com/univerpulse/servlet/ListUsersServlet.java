@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by svivanov on 30.03.16.
- */
+
 @WebServlet(name="ListUsersServlet", urlPatterns = {"/listusers"})
 public class ListUsersServlet extends HttpServlet {
     @Override

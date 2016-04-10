@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by svivanov on 28.03.16.
- */
+
 @WebServlet(name = "registrationservlet", urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
 

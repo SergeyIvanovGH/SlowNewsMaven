@@ -29,7 +29,6 @@ public class Channel {
     public Date getPubDateInDateFormat()  {
         DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
         //new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);;
-        // DateFormat dateFormatterRssPubDate = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
         Date date = null;
         try {
             date = formatter.parse(this.pubDate);

@@ -4,12 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 05.04.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public class HashValue {
 
     public static String generate(String string) {

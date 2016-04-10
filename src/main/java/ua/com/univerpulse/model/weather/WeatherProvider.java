@@ -27,10 +27,7 @@ public class WeatherProvider {
 
     public Weather getWeather() {
         Client client = ClientBuilder.newClient();
-<<<<<<< HEAD
-=======
         // other site with weather forecast http://openweathermap.org/current
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
         WebTarget target = client.target("https://api.forecast.io/").path("forecast/ccc9e70f9fbe7b36c2ceea0201205811/50.450100,30.523400");
 
         String stringWeatherJSON = target.request(MediaType.APPLICATION_JSON_TYPE).get(String.class);

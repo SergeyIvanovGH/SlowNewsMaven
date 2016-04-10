@@ -1,11 +1,5 @@
 package ua.com.univerpulse.model.weather;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 05.04.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public enum WeatherIdentifier {
     LATITUDE("latitude"),
     LONGITUDE("longitude"),

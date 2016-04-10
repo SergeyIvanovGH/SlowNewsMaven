@@ -1,11 +1,5 @@
 package ua.com.univerpulse.model;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 28.03.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public class News {
     private String date;
     private String title;

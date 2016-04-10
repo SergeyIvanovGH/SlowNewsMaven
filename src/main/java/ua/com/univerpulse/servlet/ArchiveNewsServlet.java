@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by svivanov on 28.03.16.
- */
 @WebServlet(name = "archivenewsservlet", urlPatterns = {"/archivenews"})
 public class ArchiveNewsServlet extends HttpServlet {
 

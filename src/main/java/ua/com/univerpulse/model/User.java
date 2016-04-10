@@ -1,11 +1,5 @@
 package ua.com.univerpulse.model;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 28.03.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public class User {
     private String name;
     private String login;

@@ -5,12 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 05.04.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public class Weather {
     private String timezone;
     private double latitude;
@@ -105,11 +99,7 @@ public class Weather {
         sb.append(timezone).append(": at ");
         sb.append(getTimeByFormat()).append(", ");
         sb.append(summary).append(", ");
-<<<<<<< HEAD
         sb.append(temperature).append(" \u00b0C");
-=======
-        sb.append(temperature).append(" °C");
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
         return sb.toString();
     }
 }

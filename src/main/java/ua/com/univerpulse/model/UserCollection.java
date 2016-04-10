@@ -3,12 +3,6 @@ package ua.com.univerpulse.model;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by svivanov on 29.03.16.
- */
->>>>>>> 287e58700abc6d8c58f69a7e56e090314014f39d
 public class UserCollection {
     private static UserCollection ourInstance = new UserCollection();
     private List<User> users = new ArrayList<>();

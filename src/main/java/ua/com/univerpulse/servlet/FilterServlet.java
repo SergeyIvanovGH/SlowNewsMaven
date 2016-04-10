@@ -8,9 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-/**
- * Created by svivanov on 30.03.16.
- */
+
 @WebFilter(filterName = "FilterServlet", urlPatterns = {"/*"})
 public class FilterServlet implements Filter {
     private FilterConfig filterConfig;
