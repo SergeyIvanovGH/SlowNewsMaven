@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.header {
+    height: 47px;
+    display: block;
+    background-color: #39b6a8;
+}
+.headeruser {
+    padding: 14px 16px;
+    float: left;
+    font-size: smaller;
+}
+.headerweather {
+    padding: 16px 0px;
+    float: left;
+    font-size: x-small;
+}
+.headermenu {
+    float: right;
+}
+.headermenu_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #39b6a8;
+    font-size: small;
+}
+.headermenu_li {
+    float: left;
+}
+.headermenu_li .headermenu_a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.headermenu_li .headermenu_a:hover {
+    background-color: #2b8a7f;
+}
