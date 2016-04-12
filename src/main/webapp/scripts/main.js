@@ -11,6 +11,19 @@ $(function() {
         });
     });
 
+    $(".headermenu_a").each(function(index, element) {
+        $(element).click(function (event) {
+            var targetUrl = $(this).attr('href'),
+                targetTitle = $(this).html();
+
+            //window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
+            window.history.pushState({}, "", targetUrl);
+
+            //event.preventDefault();
+            return false;
+        });
+    });
+
     httpRequestWeather();
     setInterval(httpRequestWeather, 300000);
 });
