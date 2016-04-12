@@ -8,6 +8,8 @@ import javax.ws.rs.core.MediaType;
 
 public class WeatherProvider {
     private static WeatherProvider ourInstance = new WeatherProvider();
+    private long timeUpdateWeather;
+    private Weather weather;
 
     public static WeatherProvider getInstance() {
         return ourInstance;
@@ -26,6 +28,11 @@ public class WeatherProvider {
     }
 
     public Weather getWeather() {
+        if ((System.currentTimeMillis() - timeUpdateWeather) < 10*60*1000) {
+            return this.weather;
+        }
+
+        timeUpdateWeather = System.currentTimeMillis();
         Client client = ClientBuilder.newClient();
         // other site with weather forecast http://openweathermap.org/current
         WebTarget target = client.target("https://api.forecast.io/").path("forecast/ccc9e70f9fbe7b36c2ceea0201205811/50.450100,30.523400");
@@ -40,7 +47,10 @@ public class WeatherProvider {
         stringBuilder.append(currently);
 
         String[] tokenJSON = stringBuilder.toString().split(",");
-        Weather weather = new Weather();
+        if (weather != null) {
+            weather = null;
+        }
+        weather = new Weather();
 
         for (String s : tokenJSON) {
             String[] token = s.split(":");
