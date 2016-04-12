@@ -99,7 +99,7 @@ public class Weather {
         sb.append(timezone).append(": at ");
         sb.append(getTimeByFormat()).append(", ");
         sb.append(summary).append(", ");
-        sb.append(temperature).append(" \u00b0C");
+        sb.append(temperature).append(" &#8451;");  // Symbol DEGREE CELSIUS in HTML
         return sb.toString();
     }
 }

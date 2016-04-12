@@ -12,7 +12,20 @@
 
         <div>
             <div class="contentheader">
-                <h4>News feed</h4>
+                <table>
+                    <tr>
+                        <td>
+                            <h4>News feed</h4>
+                        </td>
+                        <td>
+                            <input type="text" id="txtSearch" />
+                            <input type="button" id="btnSearch" value="Find">
+                        </td>
+                        <!-- <td>
+                            &#128269;
+                        </td> -->
+                    </tr>
+                </table>
                 <hr/>
             </div>
                 <ul class="message_ul">

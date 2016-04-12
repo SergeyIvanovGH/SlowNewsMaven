@@ -1,8 +1,5 @@
 package ua.com.univerpulse.servlet;
 
-import ua.com.univerpulse.model.weather.Weather;
-import ua.com.univerpulse.model.weather.WeatherProvider;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +9,9 @@ import java.io.IOException;
 @WebFilter(filterName = "FilterServlet", urlPatterns = {"/*"})
 public class FilterServlet implements Filter {
     private FilterConfig filterConfig;
-    private Weather weather;
-    private long timeUpdateWeather;
-    private WeatherProvider weatherProvider = WeatherProvider.getInstance();;
+//    private Weather weather;
+//    private long timeUpdateWeather;
+//    private WeatherProvider weatherProvider = WeatherProvider.getInstance();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -27,11 +24,11 @@ public class FilterServlet implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
 
-        if ((System.currentTimeMillis() - timeUpdateWeather) > 10*60*1000) {
-            weather = weatherProvider.getWeather();
-            timeUpdateWeather = System.currentTimeMillis();
-        }
-        request.getSession().setAttribute("weather", weather);
+//        if ((System.currentTimeMillis() - timeUpdateWeather) > 10*60*1000) {
+//            weather = weatherProvider.getWeather();
+//            timeUpdateWeather = System.currentTimeMillis();
+//        }
+//        request.getSession().setAttribute("weather", weather);
 
         StringBuilder sb = new StringBuilder();
         sb.append("Request has data: ");
