@@ -7,6 +7,7 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
+
     <properties>
         <maven.compiler.source>1.7 </maven.compiler.source>
         <maven.compiler.target>1.7 </maven.compiler.target>
@@ -20,7 +21,11 @@
             <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
             <build>
+<<<<<<< HEAD
                 <finalName>SlowNewsMaven</finalName>
+=======
+                <finalName>{APP_NAME}</finalName>
+>>>>>>> 48bff949029d7226fef7e6c83eaa1700fd30c140
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
@@ -34,7 +39,10 @@
             </build>
         </profile>
     </profiles>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 48bff949029d7226fef7e6c83eaa1700fd30c140
     <dependencies>
         <dependency>
             <groupId>jstl</groupId>
