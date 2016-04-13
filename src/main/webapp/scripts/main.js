@@ -16,8 +16,7 @@ $(function() {
             var targetUrl = $(this).attr('href'),
                 targetTitle = $(this).html();
 
-            //window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
-            window.history.pushState({}, "", targetUrl);
+            window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
 
             //event.preventDefault();
             return false;
