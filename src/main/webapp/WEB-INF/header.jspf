@@ -10,30 +10,20 @@
         </c:choose>!
     </div>
     <div class = "headerweather">
-        <%--<c:if test="${!empty sessionScope.weather}">--%>
-            <%--${weather}--%>
-        <%--</c:if>--%>
     </div>
     <div class="headermenu">
         <nav>
             <ul class="headermenu_ul">
-                <li class="headermenu_li"><a class="headermenu_a" href="news">News feed</a></li>
+                <li class="headermenu_li"><a class="headermenu_a" href="news" id="news">News feed</a></li>
                 <c:if test="${!empty sessionScope.username}">
                     <li class="headermenu_li"><a class="headermenu_a" href="archivenews">Archive</a></li>
+                    <li class="headermenu_li"><a class="headermenu_a" href="logout">Logout</a></li>
                 </c:if>
                 <c:if test="${empty sessionScope.username}">
                     <li class="headermenu_li"><a class="headermenu_a" href="login">Login</a></li>
                     <li class="headermenu_li"><a class="headermenu_a" href="registration">Registration</a></li>
                 </c:if>
-                <c:if test="${!empty sessionScope.username}">
-                    <li class="headermenu_li"><a class="headermenu_a" href="logout">Logout</a></li>
-                </c:if>
             </ul>
         </nav>
     </div>
 </div>
-
-<script src="scripts/jquery-2.2.3.js"></script>
-<script src="scripts/weather.js" type="text/javascript"></script>
-<script src="scripts/menu.js" type="text/javascript"></script>
-<script src="scripts/main.js" type="text/javascript"></script>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "archivenewsservlet", urlPatterns = {"/archivenews"})
+@WebServlet(name = "archivenewsservlet", urlPatterns = {"/content/archivenews"})
 public class ArchiveNewsServlet extends HttpServlet {
 
     @Override
@@ -25,6 +25,6 @@ public class ArchiveNewsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewsCollection.getInstance().deleteNewsFromArchive(req.getParameter("newsid"));
 
-        resp.sendRedirect("archivenews");
+//        resp.sendRedirect("archivenews");
     }
 }

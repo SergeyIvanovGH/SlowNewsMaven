@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet(name = "loginservlet", urlPatterns = {"/login"})
+@WebServlet(name = "loginservlet", urlPatterns = {"/content/login"})
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -30,14 +30,20 @@ public class LoginServlet extends HttpServlet {
         UserCollection userCollection = UserCollection.getInstance();
         User user = userCollection.identifyUser(request.getParameter("login"), request.getParameter("passwd"));
         if (user == null) {
-            request.setAttribute("error_message", "User not found !");
-            session.setAttribute("username", "");
-
-            doGet(request, response);
+//            request.setAttribute("error_message", "User not found !");
+//            session.setAttribute("username", "");
+//
+//            doGet(request, response);
+//            throw new ServletException("User not found");
+//            response.getWriter().print("User not found !");
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            response.getWriter().print("User not found !");
         }
         else {
             session.setAttribute("username", user.getName());
-            response.sendRedirect("news");
+            response.getWriter().print("You are logged !");
+//            response.sendRedirect("/SlowNewsMaven/news");
         }
     }
 }

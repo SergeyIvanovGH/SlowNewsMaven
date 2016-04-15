@@ -6,6 +6,7 @@ body {
     height: 47px;
     display: block;
     background-color: #39b6a8;
+    margin-bottom: 10px;
 }
 .headeruser {
     padding: 14px 16px;

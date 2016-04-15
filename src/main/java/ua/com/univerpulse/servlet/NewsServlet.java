@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "lastnewsservlet", urlPatterns = {"/news"})
+@WebServlet(name = "NewsServlet", urlPatterns = {"/content/news"})
 public class NewsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewsCollection.getInstance().putNewsToArchive(req.getParameter("newsid"));
 
-        resp.sendRedirect("news");
+//        resp.sendRedirect("/SlowNewsMaven/news");
     }
 
     @Override

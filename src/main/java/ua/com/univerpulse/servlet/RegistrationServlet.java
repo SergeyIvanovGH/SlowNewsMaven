@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet(name = "registrationservlet", urlPatterns = {"/registration"})
+@WebServlet(name = "registrationservlet", urlPatterns = {"/content/registration"})
 public class RegistrationServlet extends HttpServlet {
 
     @Override
@@ -34,7 +34,7 @@ public class RegistrationServlet extends HttpServlet {
         UserCollection.getInstance().addUser(user);
 
         session.setAttribute("username", user.getName());
-        resp.sendRedirect("news");
+//        resp.sendRedirect("/SlowNewsMaven/news");
     }
 
 }

@@ -19,5 +19,6 @@ public class LogoutServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/news");
         dispatcher.forward(req, resp);
+//        resp.sendRedirect("/SlowNewsMaven/news");
     }
 }

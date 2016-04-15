@@ -2,6 +2,7 @@ package ua.com.univerpulse.servlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 
@@ -16,15 +17,15 @@ public class FilterServlet implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//        ServletContext servletContext = filterConfig.getServletContext();
-//        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        ServletContext servletContext = filterConfig.getServletContext();
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-//        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 //        sb.append("Beginservlet. Request has data: ");
 //        sb.append(", from ip: " + servletRequest.getRemoteAddr());
-//        sb.append(", method: " + request.getMethod());
-//        sb.append(", URL: " + request.getRequestURL());
-//        servletContext.log(sb.toString());
+        sb.append(", method: " + request.getMethod());
+        sb.append(", URL: " + request.getRequestURL());
+        servletContext.log(sb.toString());
 
         filterChain.doFilter(servletRequest, servletResponse);
 

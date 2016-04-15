@@ -4,6 +4,7 @@
 }
 .content_err {
     color: red;
+    visibility: hidden;
 }
 .message_ul {
     list-style-type: none;

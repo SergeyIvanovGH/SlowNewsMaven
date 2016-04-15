@@ -1,42 +1,53 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <%@include file="stylesheet.jspf"%>
-</head>
-<body>
-
-    <%@include file="header.jspf" %>
-
-    <div class="contentwrap">
-        <div class="contentheader">
-            <h4>Registration user</h4>
-            <hr/>
-        </div>
-        <div class="contentfeed">
-            <p>Enter your data:</p>
-            <form name="loginform" action="registration" method="POST">
-                <label>Name:</label>
-                <div>
-                    <input name="name" type="text"/>
-                </div>
-                <label>Login(E-Mail):</label>
-                <div>
-                    <input name="login" type="email"/>
-                </div>
-                <label>Password:</label>
-                <div>
-                    <input name="passwd" type="password">
-                </div>
-                <p/>
-                <input value="Submit" id="btnSubmit" type="submit">
-            </form>
-        </div>
+<div class="contentheader">
+    <h4>Registration user</h4>
+    <hr/>
+</div>
+<div class="contentfeed">
+    <div class="content_err">
     </div>
+    <p>Enter your data:</p>
+    <label>Name:</label>
+    <div>
+        <input name="name" id="name" type="text"/>
+    </div>
+    <label>Login(E-Mail):</label>
+    <div>
+        <input name="login" id="login" type="email"/>
+    </div>
+    <label>Password:</label>
+    <div>
+        <input name="passwd" id="passwd" type="password">
+    </div>
+    <p/>
+    <input value="Submit" id="btnSubmit" type="button">
+</div>
 
-    <%@include file="footer.jspf" %>
+<script type="text/javascript">
+    $("#btnSubmit").on("click", function() {
+        var stringPOST = "name="+$("#name").val()+"&";
+        stringPOST += "login="+$("#login").val()+"&";
+        stringPOST += "passwd="+$("#passwd").val();
+        $("#content_err").css("visibility", "hidden");
 
-</body>
-</html>
+        $.post("content/registration", stringPOST)
+                .done(function() { $(".content").html("User registered success !"); })
+                .fail(function() {
+                    $("#content_err").css("visibility", "visible").html("<p>Error registration user !</p>");
+                });
+
+//        $.ajax({
+//            type: 'POST',
+//            url: 'content/registration',
+//            data: stringPOST,
+//            success: function (responseText) {
+//                $(".content").html("User registered success !");
+//            },
+//            error: function() {
+//                $("#content_err").css("visibility", "visible");
+//                $("#content_err").html("<p>Error registration user !</p>");
+//            }
+//        });
+    });
+</script>

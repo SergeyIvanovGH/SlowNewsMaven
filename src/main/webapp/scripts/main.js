@@ -1,28 +1,47 @@
-$(function() {
-
-    $("#btnSearch").click(function() {
-        var searchedText = $('#txtSearch').val();
-        var theRegEx = new RegExp("("+searchedText+")", "igm");
-
-        $(".message_title").each(function (i, elem) {
-            var pageText = $(elem).text().replace("<span class='content_err'>","").replace("</span>");
-            var newHtml = pageText.replace(theRegEx ,"<span class='content_err'>$1</span>");
-            $(elem).html(newHtml);
-        });
-    });
+$(document).ready(function() {
 
     $(".headermenu_a").each(function(index, element) {
         $(element).click(function (event) {
             var targetUrl = $(this).attr('href'),
                 targetTitle = $(this).html();
 
-            window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
+            if (targetUrl !== "logout") {
+                window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
+                document.title = targetTitle;
 
-            //event.preventDefault();
-            return false;
+                $.get("content/" + targetUrl)
+                    .done(function (data) {
+                        $(".content").html(data);
+                    })
+                    .fail(function (data) {
+                        $(".content").html("Error load data from server ! Try again !");
+                    });
+                //event.preventDefault();
+                return false;
+            }
         });
     });
 
-    httpRequestWeather();
+    function httpRequestWeather() {
+        //var req = new XMLHttpRequest();
+        //req.open('GET', 'http://localhost:8080/SlowNewsMaven/weather', false);
+        //req.send(null);
+        //if(req.status == 200) {
+        //    $(".headerweather").each(function (index, element) {
+        //        $(element).html(req.responseText);
+        //    });
+        //}
+        $.get("weather", function(data, status) {
+            if (status === "success") {
+                $(".headerweather").html(data);
+            }
+        });
+    }
+
+    if ($(".content").html() === "") {
+        $("#news").click();
+    }
+
+    setTimeout(httpRequestWeather, 1000);
     setInterval(httpRequestWeather, 300000);
 });
