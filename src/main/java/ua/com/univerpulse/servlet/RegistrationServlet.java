@@ -16,17 +16,6 @@ import java.io.IOException;
 
 @WebServlet(name = "registrationservlet", urlPatterns = {"/content/registration"})
 public class RegistrationServlet extends HttpServlet {
-    UserDao userDao;
-
-    @Override
-    public void init() throws ServletException {
-        PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
-        try {
-            userDao = new UserDao(postgreDaoFactory.getConnection());
-        } catch (PersistException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,7 +33,10 @@ public class RegistrationServlet extends HttpServlet {
         user.setPassword(req.getParameter("passwd"));
 
         try {
+            PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
+            UserDao userDao = new UserDao(postgreDaoFactory.getConnection());
             userDao.persist(user);
+            userDao.closeConnection();
 //            session.setAttribute("username", user.getName());
         } catch (PersistException e) {
             e.printStackTrace();

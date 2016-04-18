@@ -15,25 +15,18 @@ import java.io.IOException;
 
 @WebServlet(name="ListUsersServlet", urlPatterns = {"/listusers"})
 public class ListUsersServlet extends HttpServlet {
-    UserDao userDao;
-
-    @Override
-    public void init() throws ServletException {
-        PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
-        try {
-            userDao = new UserDao(postgreDaoFactory.getConnection());
-        } catch (PersistException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        UserCollection userCollection = UserCollection.getInstance();
 
         try {
+            PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
+            UserDao userDao = new UserDao(postgreDaoFactory.getConnection());
+
             req.getSession().setAttribute("listusers", userDao.getAll());
+
+            userDao.closeConnection();
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/listusers.jsp");
             dispatcher.forward(req,resp);

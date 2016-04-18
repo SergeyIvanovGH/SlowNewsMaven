@@ -173,4 +173,12 @@ public abstract class AbstractJDBCDao<T extends IdentifierDao<PK>, PK extends In
     public AbstractJDBCDao(Connection connection) {
         this.connection = connection;
     }
+
+    public void closeConnection() {
+        try {
+            this.connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
