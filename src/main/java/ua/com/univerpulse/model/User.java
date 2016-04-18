@@ -1,6 +1,9 @@
 package ua.com.univerpulse.model;
 
-public class User {
+import ua.com.univerpulse.dao.IdentifierDao;
+
+public class User implements IdentifierDao<Integer> {
+    private int id;
     private String name;
     private String login;
     private String password;
@@ -12,6 +15,14 @@ public class User {
         this.login = login;
         this.name = name;
         setPassword(password);
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -36,5 +47,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = HashValue.generate(password);
+    }
+
+    public void setPasswordNoConvert(String password) {
+        this.password = password;
     }
 }

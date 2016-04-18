@@ -1,6 +1,9 @@
 package ua.com.univerpulse.model;
 
-public class News {
+import ua.com.univerpulse.dao.IdentifierDao;
+
+public class News implements IdentifierDao<Integer> {
+    private int id;
     private String date;
     private String title;
     private String description;
@@ -46,5 +49,14 @@ public class News {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

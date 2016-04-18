@@ -1,7 +1,9 @@
 package ua.com.univerpulse.servlet;
 
+import ua.com.univerpulse.dao.PersistException;
+import ua.com.univerpulse.dao.PostgreDaoFactory;
+import ua.com.univerpulse.dao.UserDao;
 import ua.com.univerpulse.model.User;
-import ua.com.univerpulse.model.UserCollection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,17 @@ import java.io.IOException;
 
 @WebServlet(name = "loginservlet", urlPatterns = {"/content/login"})
 public class LoginServlet extends HttpServlet {
+    UserDao userDao;
+
+    @Override
+    public void init() throws ServletException {
+        PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
+        try {
+            userDao = new UserDao(postgreDaoFactory.getConnection());
+        } catch (PersistException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,23 +40,19 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session =  (HttpSession) request.getSession();
 
-        UserCollection userCollection = UserCollection.getInstance();
-        User user = userCollection.identifyUser(request.getParameter("login"), request.getParameter("passwd"));
-        if (user == null) {
-//            request.setAttribute("error_message", "User not found !");
-//            session.setAttribute("username", "");
-//
-//            doGet(request, response);
-//            throw new ServletException("User not found");
-//            response.getWriter().print("User not found !");
+        User user = null;
+        String login = request.getParameter("login");
+        try {
+            user = userDao.getByLogin(login);
+
+            session.setAttribute("username", user.getName());
+            response.getWriter().print("You are logged !");
+
+        } catch (PersistException e) {
+            e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             response.getWriter().print("User not found !");
-        }
-        else {
-            session.setAttribute("username", user.getName());
-            response.getWriter().print("You are logged !");
-//            response.sendRedirect("/SlowNewsMaven/news");
         }
     }
 }

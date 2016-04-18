@@ -1,7 +1,9 @@
 package ua.com.univerpulse.servlet;
 
+import ua.com.univerpulse.dao.PersistException;
+import ua.com.univerpulse.dao.PostgreDaoFactory;
+import ua.com.univerpulse.dao.UserDao;
 import ua.com.univerpulse.model.User;
-import ua.com.univerpulse.model.UserCollection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +11,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
 @WebServlet(name = "registrationservlet", urlPatterns = {"/content/registration"})
 public class RegistrationServlet extends HttpServlet {
+    UserDao userDao;
+
+    @Override
+    public void init() throws ServletException {
+        PostgreDaoFactory postgreDaoFactory = new PostgreDaoFactory();
+        try {
+            userDao = new UserDao(postgreDaoFactory.getConnection());
+        } catch (PersistException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,17 +36,19 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session =  (HttpSession) req.getSession();
+//        HttpSession session =  (HttpSession) req.getSession();
 
         User user = new User();
         user.setName(req.getParameter("name"));
         user.setLogin(req.getParameter("login"));
         user.setPassword(req.getParameter("passwd"));
 
-        UserCollection.getInstance().addUser(user);
-
-        session.setAttribute("username", user.getName());
-//        resp.sendRedirect("/SlowNewsMaven/news");
+        try {
+            userDao.persist(user);
+//            session.setAttribute("username", user.getName());
+        } catch (PersistException e) {
+            e.printStackTrace();
+        }
     }
 
 }
